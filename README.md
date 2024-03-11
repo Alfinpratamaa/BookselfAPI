@@ -20,11 +20,13 @@ Proyek ini adalah implementasi API untuk mengelola data buku pada sebuah perpust
 
 ## Teknologi yang Digunakan
 
-- AWS Lambda
-- AWS API Gateway
-- AWS DynamoDB
 - Bahasa Pemrograman: Node.js
-- Framework: Express.js
+- Library: Express.js
+  
+## Tools 
+
+- postman sebagai testing API
+- VSCODE sebagai code editor
 
 ## Cara Penggunaan
 
@@ -33,6 +35,7 @@ Proyek ini adalah implementasi API untuk mengelola data buku pada sebuah perpust
 3. Jalankan perintah `npm install` untuk menginstal semua dependensi.
 4. Jalankan perintah `npm start` untuk menjalankan server API.
 5. Buka browser dan akses `http://localhost:9000` untuk mengakses API.
+6. untuk bahan postman testing <a href="https://github.com/dicodingacademy/a261-backend-pemula-labs/raw/099-shared-files/BookshelfAPITestCollectionAndEnvironment.zip" style="color : blue;">download disini</a> 
 
 ## Kontribusi
 
