@@ -35,7 +35,10 @@ Proyek ini adalah implementasi API untuk mengelola data buku pada sebuah perpust
 3. Jalankan perintah `npm install` untuk menginstal semua dependensi.
 4. Jalankan perintah `npm start` untuk menjalankan server API.
 5. Buka browser dan akses `http://localhost:9000` untuk mengakses API.
-6. untuk bahan postman testing <a href="https://github.com/dicodingacademy/a261-backend-pemula-labs/raw/099-shared-files/BookshelfAPITestCollectionAndEnvironment.zip" style="color : blue;">download disini</a> 
+6. bahan postman testing <a href="https://github.com/dicodingacademy/a261-backend-pemula-labs/raw/099-shared-files/BookshelfAPITestCollectionAndEnvironment.zip" style="color : blue;">download disini</a>
+7. buka postman dibagian navbar workspace tekan import lalu tambahka saja dari file yg sudah didownload
+8. pastikan endpoint sesuai
+9. selesai
 
 ## Kontribusi
 
