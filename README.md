@@ -21,7 +21,11 @@ Proyek ini adalah implementasi API untuk mengelola data buku pada sebuah perpust
 ## Teknologi yang Digunakan
 
 - Bahasa Pemrograman: Node.js
+<<<<<<< HEAD
 - Library: Hapi
+=======
+- Library: Express.js
+>>>>>>> 63395a2f57974508294d2e464d729fef1f32f27d
   
 ## Tools 
 
