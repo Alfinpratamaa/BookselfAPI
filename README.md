@@ -1,7 +1,7 @@
 # Bookself API
 
-![AWS Logo](https://example.com/aws_logo.png)
-![Dicoding Logo](https://example.com/dicoding_logo.png)
+![AWS Logo](https://imgs.search.brave.com/yoCcr1UkCiC-HUDqfhUMv_sLukmqZT3gz0Pq1fJhkiQ/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/bGlibG9nby5jb20v/aW1nLWxvZ28vYXc3/NTE5ZmU1OC1hd3Mt/bG9nby1maWxlLWFt/YXpvbi13ZWItc2Vy/dmljZXMtbG9nby1z/dmctd2lraW1lZGlh/LWNvbW1vbnMucG5n)
+![Dicoding Logo](https://imgs.search.brave.com/m7g2fJJHMQsYuxjJt9QUl2gR_91iFEl9CNjvuyJKeec/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5saWNkbi5jb20v/ZG1zL2ltYWdlL0Q1/NjFCQVFILXNDb0Jx/czZuelEvY29tcGFu/eS1iYWNrZ3JvdW5k/XzEwMDAwLzAvMTY2/MDE4Mjg0NTcxMi9k/aWNvZGluZ19jb3Zl/cj9lPTIxNDc0ODM2/NDcmdj1iZXRhJnQ9/QzhCdmk5eUVXdE5v/TXF2YmVpWDdRRDR5/cHF6ZWRtRVh6c09C/LWJtSktOcw.jpeg)
 
 Ini adalah proyek Bookself API yang dibuat sebagai bagian dari bootcamp AWS x Dicoding.
 
