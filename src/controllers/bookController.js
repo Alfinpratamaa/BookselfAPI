@@ -1,8 +1,9 @@
-import { Book } from '../models/Book.js'
+// controllers/bookController.js
+import { Book } from "../models/Book.js";
 
-const books = []
+const books = [];
 
-const addBook = (req, res) => {
+const addBook = (req, h) => {
   try {
     const {
       name,
@@ -12,22 +13,26 @@ const addBook = (req, res) => {
       publisher,
       pageCount,
       readPage,
-      reading
-    } = req.body
+      reading,
+    } = req.payload;
 
     if (!name) {
-      return res.status(400).json({
-        status: 'fail',
-        message: 'Gagal menambahkan buku. Mohon isi nama buku'
-      })
+      return h
+        .response({
+          status: "fail",
+          message: "Gagal menambahkan buku. Mohon isi nama buku",
+        })
+        .code(400);
     }
 
     if (readPage > pageCount) {
-      return res.status(400).json({
-        status: 'fail',
-        message:
-          'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount'
-      })
+      return h
+        .response({
+          status: "fail",
+          message:
+            "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount",
+        })
+        .code(400);
     }
 
     const newBook = new Book({
@@ -38,81 +43,95 @@ const addBook = (req, res) => {
       publisher,
       pageCount,
       readPage,
-      reading
-    })
+      reading,
+    });
 
-    books.push(newBook)
+    books.push(newBook);
 
-    return res.status(201).json({
-      status: 'success',
-      message: 'Buku berhasil ditambahkan',
-      data: {
-        bookId: newBook.id
-      }
-    })
+    return h
+      .response({
+        status: "success",
+        message: "Buku berhasil ditambahkan",
+        data: {
+          bookId: newBook.id,
+        },
+      })
+      .code(201);
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({
-      status: 'error',
-      message: 'Internal Server Error'
-    })
+    console.error(error);
+    return h
+      .response({
+        status: "error",
+        message: "Internal Server Error",
+      })
+      .code(500);
   }
-}
+};
 
-const getAllBooks = (req, res) => {
+const getAllBooks = (req, h) => {
   try {
     const bookList = books.map(({ id, name, publisher }) => ({
       id,
       name,
-      publisher
-    }))
+      publisher,
+    }));
 
-    return res.status(200).json({
-      status: 'success',
-      data: {
-        books: bookList
-      }
-    })
+    return h
+      .response({
+        status: "success",
+        data: {
+          books: bookList,
+        },
+      })
+      .code(200);
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({
-      status: 'error',
-      message: 'Internal Server Error'
-    })
+    console.error(error);
+    return h
+      .response({
+        status: "error",
+        message: "Internal Server Error",
+      })
+      .code(500);
   }
-}
+};
 
-const getBookById = (req, res) => {
+const getBookById = (req, h) => {
   try {
-    const { bookId } = req.params
+    const { bookId } = req.params;
 
-    const foundBook = books.find((book) => book.id === bookId)
+    const foundBook = books.find((book) => book.id === bookId);
 
     if (!foundBook) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'Buku tidak ditemukan'
-      })
+      return h
+        .response({
+          status: "fail",
+          message: "Buku tidak ditemukan",
+        })
+        .code(404);
     }
 
-    return res.status(200).json({
-      status: 'success',
-      data: {
-        book: foundBook
-      }
-    })
+    return h
+      .response({
+        status: "success",
+        data: {
+          book: foundBook,
+        },
+      })
+      .code(200);
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({
-      status: 'error',
-      message: 'Internal Server Error'
-    })
+    console.error(error);
+    return h
+      .response({
+        status: "error",
+        message: "Internal Server Error",
+      })
+      .code(500);
   }
-}
+};
 
-const updateBookById = (req, res) => {
+const updateBookById = (req, h) => {
   try {
-    const { bookId } = req.params
+    const { bookId } = req.params;
     const {
       name,
       year,
@@ -121,31 +140,37 @@ const updateBookById = (req, res) => {
       publisher,
       pageCount,
       readPage,
-      reading
-    } = req.body
+      reading,
+    } = req.payload;
 
-    const foundBookIndex = books.findIndex((book) => book.id === bookId)
+    const foundBookIndex = books.findIndex((book) => book.id === bookId);
 
     if (foundBookIndex === -1) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'Gagal memperbarui buku. Id tidak ditemukan'
-      })
+      return h
+        .response({
+          status: "fail",
+          message: "Gagal memperbarui buku. Id tidak ditemukan",
+        })
+        .code(404);
     }
 
     if (!name) {
-      return res.status(400).json({
-        status: 'fail',
-        message: 'Gagal memperbarui buku. Mohon isi nama buku'
-      })
+      return h
+        .response({
+          status: "fail",
+          message: "Gagal memperbarui buku. Mohon isi nama buku",
+        })
+        .code(400);
     }
 
     if (readPage > pageCount) {
-      return res.status(400).json({
-        status: 'fail',
-        message:
-          'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount'
-      })
+      return h
+        .response({
+          status: "fail",
+          message:
+            "Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount",
+        })
+        .code(400);
     }
 
     const updatedBook = {
@@ -160,50 +185,60 @@ const updateBookById = (req, res) => {
       reading,
       finished: pageCount === readPage,
       insertedAt: books[foundBookIndex].insertedAt,
-      updatedAt: new Date().toISOString()
-    }
+      updatedAt: new Date().toISOString(),
+    };
 
-    books[foundBookIndex] = updatedBook
+    books[foundBookIndex] = updatedBook;
 
-    return res.status(200).json({
-      status: 'success',
-      message: 'Buku berhasil diperbarui'
-    })
+    return h
+      .response({
+        status: "success",
+        message: "Buku berhasil diperbarui",
+      })
+      .code(200);
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({
-      status: 'error',
-      message: 'Internal Server Error'
-    })
+    console.error(error);
+    return h
+      .response({
+        status: "error",
+        message: "Internal Server Error",
+      })
+      .code(500);
   }
-}
+};
 
-const deleteBookById = (req, res) => {
+const deleteBookById = (req, h) => {
   try {
-    const { bookId } = req.params
+    const { bookId } = req.params;
 
-    const foundBookIndex = books.findIndex((book) => book.id === bookId)
+    const foundBookIndex = books.findIndex((book) => book.id === bookId);
 
     if (foundBookIndex === -1) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'Buku gagal dihapus. Id tidak ditemukan'
-      })
+      return h
+        .response({
+          status: "fail",
+          message: "Buku gagal dihapus. Id tidak ditemukan",
+        })
+        .code(404);
     }
 
-    books.splice(foundBookIndex, 1)
+    books.splice(foundBookIndex, 1);
 
-    return res.status(200).json({
-      status: 'success',
-      message: 'Buku berhasil dihapus'
-    })
+    return h
+      .response({
+        status: "success",
+        message: "Buku berhasil dihapus",
+      })
+      .code(200);
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({
-      status: 'error',
-      message: 'Internal Server Error'
-    })
+    console.error(error);
+    return h
+      .response({
+        status: "error",
+        message: "Internal Server Error",
+      })
+      .code(500);
   }
-}
+};
 
-export { addBook, getAllBooks, getBookById, updateBookById, deleteBookById }
+export { addBook, getAllBooks, getBookById, updateBookById, deleteBookById };

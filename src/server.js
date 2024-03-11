@@ -1,15 +1,21 @@
-import express from 'express'
-import cors from 'cors'
-import bodyParser from 'body-parser'
-import { bookRoutes } from './routes/bookRoute.js'
+import Hapi from "@hapi/hapi";
+import routes from "./routes/bookRoute.js";
 
-export const app = express()
-const port = 9000
+const init = async () => {
+  const server = Hapi.server({
+    port: 9000,
+    host: "localhost",
+  });
 
-app.use(cors())
-app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+  server.route(routes);
 
-app.use('/', bookRoutes)
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
+};
 
-app.listen(port, () => console.log(`Server is running on port ${port}`))
+process.on("unhandledRejection", (err) => {
+  console.error(err);
+  process.exit(1);
+});
+
+init();
